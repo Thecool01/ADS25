@@ -29,7 +29,7 @@ int main() {
         int N = nursik.front(); // Берем карту и удаляем ее из колоды nursik
         nursik.pop();
 
-        if ((B == 0 && N == 9)) {
+        if ((B == 0 && N == 9)) { 
             boris.push(B);
             boris.push(N);
         }

@@ -55,7 +55,8 @@ public:
     int size() {
         return top + 1;
     }
-}
+};
+
 
 int main() {
     Stack st(5);
