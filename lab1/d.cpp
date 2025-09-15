@@ -10,11 +10,11 @@ int main() {
     stack<char> st;
 
     if (s.empty()) {
-        cout << "Yes" << endl;
+        cout << "YES" << endl;
     }
 
     for (int i = 0; i < s.size(); i++) {
-        if (!st.empty() && st.top() == s[i]) { // Ищем пару в стеке
+        if (!st.empty() && st.top() == s[i]) { // Если Нынешний символ совподает с топовым символов в стеке, то удалаем его
             st.pop();
         } else {
             st.push(s[i]);
