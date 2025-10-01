@@ -1,0 +1,28 @@
+#with recurrence
+int gcd(int a, int b) {
+    if (b == 0)
+        return a;
+    return gcd(b, a % b);
+}
+
+int main() {
+    int a = 30, b = 21;
+    cout << "gcd(" << a << ", " << b << ") = " << gcd(a, b) << endl;
+    return 0;
+}
+
+#iterative
+int gcd(int a, int b) {
+    while (b != 0) {
+        int r = a % b;  // remainder
+        a = b;
+        b = r;
+    }
+    return a;
+}
+
+int main() {
+    int a = 30, b = 21;
+    cout << "gcd(" << a << ", " << b << ") = " << gcd(a, b) << endl;
+    return 0;
+}

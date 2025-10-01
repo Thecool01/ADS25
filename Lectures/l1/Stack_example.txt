@@ -1,0 +1,36 @@
+#include <iostream>
+#include <stack>
+#include <string>
+
+using namespace std;
+
+bool isBalanced(const string& str) {
+    stack<char> s;
+
+    for (char c : str) {
+        if (c == '(') {
+            s.push(c);
+        } else if (c == ')') {
+            if (s.empty()) {
+                return false;
+            }
+            s.pop();
+        }
+    }
+
+    return s.empty();
+}
+
+int main() {
+    string input;
+    cout << "Enter a string of parentheses: ";
+    cin >> input;
+
+    if (isBalanced(input)) {
+        cout << "The parentheses are balanced." << endl;
+    } else {
+        cout << "The parentheses are not balanced." << endl;
+    }
+
+    return 0;
+}
