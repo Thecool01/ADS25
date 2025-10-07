@@ -1,65 +1,38 @@
 #include <iostream>
 #include <vector>
-#include <cmath>
-
 using namespace std;
 
-// Количество островов и максимальное число полётов
-long long n, maxFlights;
-
-// Массив, где хранится количество детей на каждом острове
+long long n, f;
 vector<long long> children;
 
-// Проверяем, можно ли доставить все подарки, если вместимость мешка = capacity
-bool canDeliver(long long capacity) {
-    long long totalFlights = 0;
-
-    // Для каждого острова считаем, сколько рейсов нужно
+bool can(long long cap) {
+    long long flights = 0;
     for (long long x : children) {
-        // округление деления детей на острове на вместимость сумки
-        totalFlights += ceil(x / capacity);
-
-        // Если рейсов уже больше, чем можно — нет смысла дальше считать
-        if (totalFlights > maxFlights) return false;
+        flights += (x + cap - 1) / cap; // ceil(x / cap)
+        if (flights > f) return false;
     }
-
-    // Проверяем, уложились ли мы в ограничение по количеству рейсов
-    return totalFlights <= maxFlights;
+    return flights <= f;
 }
 
 int main() {
-    // Вводим количество островов и разрешённое число рейсов
-    cin >> n >> maxFlights;
-
-    // Заполняем массив количеством детей
+    cin >> n >> f;
     children.resize(n);
-
-    // hi — это максимум детей на одном острове (верхняя граница вместимости)
-    long long hi = 0;
+    long long high = 0;
     for (int i = 0; i < n; i++) {
         cin >> children[i];
-        hi = max(hi, children[i]);
+        high = max(high, children[i]);
     }
 
-    // lo — минимально возможная вместимость (1 подарок)
-    // ans — ответ, который мы будем искать бинарным поиском
-    long long lo = 1, ans = hi;
-
-    // Бинарный поиск по вместимости мешка
-    while (lo <= hi) {
-        long long mid = (lo + hi) / 2; // пробуем вместимость mid
-
-        if (canDeliver(mid)) {
-            // Если при такой вместимости уложились в число рейсов,
-            // пробуем уменьшить вместимость
+    long long low = 1, ans = high;
+    while (low <= high) {
+        long long mid = (low + high) / 2;
+        if (can(mid)) {
             ans = mid;
-            hi = mid - 1;
+            high = mid - 1;
         } else {
-            // Иначе — мешок слишком маленький, увеличиваем вместимость
-            lo = mid + 1;
+            low = mid + 1;
         }
     }
 
-    // Выводим минимально возможную вместимость
-    cout << ans << endl;
+    cout << ans << "\n";
 }
