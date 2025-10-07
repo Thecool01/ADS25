@@ -26,7 +26,7 @@ int main() {
                 cookies.push(x); sum += x;
             }
         } 
-        else if (command == "print") {
+        else {
             cout << sum << endl;
         }
     }

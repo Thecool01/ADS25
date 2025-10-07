@@ -30,13 +30,13 @@ int main() {
                     sort_heap(cookies.begin(), cookies.end());
                 }
             }
-            else {
+            else { // Если же не переполнен, то просто добавляем X
                 cookies.push_back(x);
                 sum += x;
                 sort_heap(cookies.begin(), cookies.end());
             }
         }
-        else {
+        else { // Если вектор пустой, то выводим 0
             if (cookies.size() == 0) {
                 cout << 0 << endl;
             }
