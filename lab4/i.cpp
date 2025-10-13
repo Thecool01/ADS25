@@ -21,7 +21,7 @@ Node* insert(Node* root, int value) {
         root = new Node(value);
         return root;
     }
-    if (root->data == value) {
+    if (root->data == value) { // Если значение уже есть в дереве
         root->count++;
         return root;
     }
@@ -51,12 +51,14 @@ Node* deleteNode(Node* root, int value) {
     else if (root->data < value) {
 		root->right = deleteNode(root->right, value);
 	} 
-    else {
-        if (root->count > 1) {
+    else { // Если root->data == value, то есть 3 варианта
+        if (root->count > 1) { // просто минусуем count
             root->count--;
             return root;
         } 
-        else if (root->right == NULL) {
+        // Если оба ребёнка NULL — temp = NULL, удаляем узел и возвращаем NULL — родитель теперь указывает на NULL.
+        // Если ровно один ребёнок — этот ребёнок «всплывает» на место удаляемого узла.
+        else if (root->right == NULL) { 
 			Node* temp = root->left;
 			delete root;
 			return temp;

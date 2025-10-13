@@ -36,8 +36,8 @@ int main() {
         for (int i = 0; i < size; i++) {
             int node = q.front(); // Берем вершину и удаляем ее
             q.pop();
-            if (tree[node].left != -1) q.push(tree[node].left); // Если вершина имеет левых детей, то добавляем их в очередь
-            if (tree[node].right != -1) q.push(tree[node].right); // Если вершина имеет правый детей, то добавляем их в очередь
+            if (tree[node].left != -1) q.push(tree[node].left); // Если вершина имеет детей слева, то добавляем их в очередь
+            if (tree[node].right != -1) q.push(tree[node].right); // Если вершина имеет детей справа, то добавляем их в очередь
        }
     }
 

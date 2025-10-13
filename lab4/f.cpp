@@ -34,7 +34,7 @@ void count_triangles(Node* &root) {
     if (!root) return;
 
     else {
-        if (root->left != NULL && root->right != NULL) sum++; // Подсчет треугольников
+        if (root->left != NULL && root->right != NULL) sum++; // Подсчет треугольников, если есть левый и правый ребенок
         count_triangles(root->left); // С левой стороны
         count_triangles(root->right); // С правой стороны
     }
