@@ -20,7 +20,7 @@ bool cmp(const Student &a, const Student &b) {
         return a.last_name < b.last_name;
     return a.first_name < b.first_name; // сортировка по имени
 }
-
+525
 int main() {
     int n;
     cin >> n;
